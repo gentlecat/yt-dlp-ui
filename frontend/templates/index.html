@@ -1,0 +1,21 @@
+{{ define "title" }}yt-dlp-ui{{ end }}
+
+{{ define "content" }}
+    <form action="/" method="post">
+
+        <div class="row">
+            <label for="url-input" class="input-label">URL:</label>
+            <input name="url" id="url-input" class="input-text" type="url" required/>
+        </div>
+
+        <div class="row">
+            <label for="path-input" class="input-label">Path:</label>
+            <input name="path" id="path-input" class="input-text" type="text" value="/downloads" required/>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Download"/>
+        </div>
+
+    </form>
+{{ end }}
