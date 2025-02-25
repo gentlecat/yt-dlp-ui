@@ -1,0 +1,11 @@
+services:
+
+  yt-dlp-ui:
+
+    build: .
+    container_name: yt-dlp-ui
+    restart: always
+    volumes:
+      - ./downloads:/downloads
+    ports:
+      - "8080:8080"
