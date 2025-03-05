@@ -23,6 +23,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 EXPOSE 8080
 
+COPY --from=build /usr/local/bin/yt-dlp /usr/local/bin/
 COPY --from=build /usr/local/bin/yt-dlp-ui /usr/local/bin/
 
 CMD ["/usr/local/bin/yt-dlp-ui"]
