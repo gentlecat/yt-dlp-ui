@@ -2,13 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/url"
-	"os"
-	"os/exec"
-
-	"go.roman.zone/yt-dlp-ui/server/api/handlers/templates"
 )
 
 func CreationRequestHandler(w http.ResponseWriter, r *http.Request) {
@@ -34,27 +29,4 @@ func CreationRequestHandler(w http.ResponseWriter, r *http.Request) {
 	}{
 		Status: "OK",
 	})
-}
-
-func CreationInterfaceHandler(w http.ResponseWriter, r *http.Request) {
-	err := templates.ExecuteTemplates(w, struct{}{}, "frontend/templates/index.html")
-	if err != nil {
-		http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-		return
-	}
-}
-
-func download(url *url.URL, path string) {
-	cmd := exec.Command(
-		"yt-dlp",
-		"-P", path,
-		url.String(),
-	)
-
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	if err := cmd.Start(); err != nil {
-		fmt.Println("Error: ", err)
-	}
 }

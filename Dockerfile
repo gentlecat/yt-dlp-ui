@@ -1,4 +1,4 @@
-FROM golang:alpine as build
+FROM golang:alpine AS build
 
 RUN apk update && apk add git make python3 zip ffmpeg libffi-dev
 
@@ -15,7 +15,7 @@ COPY . .
 RUN go build -v -o /usr/local/bin/ ./...
 
 
-FROM alpine:latest
+FROM alpine:latest AS runtime
 
 LABEL org.opencontainers.image.source=https://github.com/gentlecat/yt-dlp-ui
 LABEL org.opencontainers.image.description="UI for yt-dlp"
