@@ -21,6 +21,8 @@ LABEL org.opencontainers.image.source=https://github.com/gentlecat/yt-dlp-ui
 LABEL org.opencontainers.image.description="UI for yt-dlp"
 LABEL org.opencontainers.image.licenses=MIT
 
+RUN apk add python3
+
 EXPOSE 8080
 
 COPY --from=build /usr/local/bin/yt-dlp /usr/local/bin/
